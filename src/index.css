@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Playfair Display", serif;
+
+  --color-coffee-dark: #3E2723;
+  --color-coffee-medium: #5D4037;
+  --color-caramel: #A1887F;
+  --color-beige: #D7CCC8;
+  --color-cream: #F5F5F5;
+  --color-accent: #8D6E63;
+}
+
+@layer base {
+  body {
+    @apply bg-cream text-coffee-dark font-sans;
+  }
+  
+  h1, h2, h3, h4 {
+    @apply font-serif;
+  }
+}
+
+.glass-card {
+  @apply bg-white/80 backdrop-blur-md border border-white/20 shadow-sm;
+}
+
+.btn-primary {
+  @apply bg-coffee-dark text-white px-6 py-3 rounded-full font-medium transition-all hover:bg-coffee-medium active:scale-95 disabled:opacity-50 disabled:pointer-events-none;
+}
+
+.btn-secondary {
+  @apply bg-beige text-coffee-dark px-6 py-3 rounded-full font-medium transition-all hover:bg-caramel hover:text-white active:scale-95;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  @apply bg-cream;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-caramel rounded-full;
+}
