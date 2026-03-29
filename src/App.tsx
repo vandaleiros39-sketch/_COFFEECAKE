@@ -14,7 +14,7 @@ import {
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Product, CartItem, OrderDetails } from './types';
-import { PRODUCTS, CATEGORIES, WHATSAPP_NUMBER, INSTAGRAM_HANDLE } from './constants';
+import { PRODUCTS, CATEGORIES, WHATSAPP_URL, INSTAGRAM_HANDLE } from './constants';
 
 export default function App() {
   const [activeCategory, setActiveCategory] = useState<string>('all');
@@ -109,7 +109,7 @@ export default function App() {
       `_Pedido enviado via Cardápio Digital_`;
 
     const encodedMessage = encodeURIComponent(message);
-    window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`, '_blank');
+    window.open(`${WHATSAPP_URL}?text=${encodedMessage}`, '_blank');
     
     setOrderConfirmed(true);
     setIsCheckoutOpen(false);
@@ -134,65 +134,44 @@ export default function App() {
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="w-44 h-44 bg-black rounded-3xl mx-auto mb-6 p-4 shadow-2xl flex items-center justify-center overflow-hidden border border-white/10"
+            className="w-44 h-44 bg-white rounded-full mx-auto mb-6 shadow-2xl flex items-center justify-center overflow-hidden border-4 border-white relative"
           >
-            <svg viewBox="0 0 200 200" className="w-full h-full">
-              {/* Crescent C */}
-              <path 
-                d="M150,50 A70,70 0 1,0 150,150 A55,55 0 1,1 150,50" 
-                fill="white" 
-              />
-              {/* Whisk icon inside the C */}
-              <g transform="translate(105, 75) rotate(-10)">
-                <rect x="-1" y="0" width="3" height="35" fill="black" rx="1.5" />
-                <path d="M0,35 Q-10,45 0,65 Q10,45 0,35" stroke="black" strokeWidth="1.5" fill="none" />
-                <path d="M0,35 Q-5,45 0,60 Q5,45 0,35" stroke="black" strokeWidth="1" fill="none" />
-              </g>
-              {/* Drips on the C */}
-              <path d="M85,148 Q85,158 90,158 Q95,158 95,148" fill="white" />
-              <path d="M115,142 Q115,152 120,152 Q125,152 125,142" fill="white" />
-              
-              {/* Text: COFFEE & CAKE */}
-              <text 
-                x="100" 
-                y="175" 
-                fill="white" 
-                fontSize="16" 
-                fontWeight="900" 
-                textAnchor="middle" 
-                fontFamily="Arial Black, sans-serif"
-              >
-                COFFEE & CAKE
-              </text>
-              
-              {/* Drips below text */}
-              <g transform="translate(35, 178)">
-                <path d="M10,0 Q10,12 14,12 Q18,12 18,0" fill="white" />
-                <path d="M28,0 Q28,8 32,8 Q36,8 36,0" fill="white" />
-                <path d="M48,0 Q48,18 54,18 Q60,18 60,0" fill="white" />
-                <path d="M72,0 Q72,10 76,10 Q80,10 80,0" fill="white" />
-                <path d="M92,0 Q92,15 98,15 Q104,15 104,0" fill="white" />
-                <path d="M116,0 Q116,9 120,9 Q124,9 124,0" fill="white" />
-                <path d="M136,0 Q136,14 140,14 Q144,14 144,0" fill="white" />
-              </g>
-            </svg>
+            <img 
+              src="https://i.postimg.cc/jjj4mDQS/Fire-Shot-Capture-005-(13)-Whats-App-Business-web-whatsapp-com.png" 
+              alt="Coffee & Cake Logo" 
+              className="w-full h-full object-cover"
+              referrerPolicy="no-referrer"
+            />
           </motion.div>
           <motion.h1 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
-            className="text-4xl font-bold mb-1 uppercase tracking-tighter"
+            className="text-5xl font-serif font-bold mb-1 tracking-tight"
           >
-            COFFEE & CAKE
+            Coffee & Cake
           </motion.h1>
           <motion.p 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3 }}
-            className="text-beige italic"
+            className="text-beige italic font-serif text-lg mb-2"
           >
             Doces artesanais feitos com amor
           </motion.p>
+          
+          <motion.a
+            href={`https://instagram.com/${INSTAGRAM_HANDLE}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.4 }}
+            className="inline-flex items-center gap-2 text-white/80 hover:text-white transition-colors text-sm font-medium mb-4"
+          >
+            <Instagram size={16} />
+            @{INSTAGRAM_HANDLE}
+          </motion.a>
           
           <div className="mt-4 flex items-center justify-center gap-2">
             <span className={`inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-semibold ${isShopOpen ? 'bg-green-500/20 text-green-400 border border-green-500/30' : 'bg-red-500/20 text-red-400 border border-red-500/30'}`}>
@@ -206,24 +185,9 @@ export default function App() {
 
       <main className="max-w-xl mx-auto px-4 -mt-8 relative z-20">
         {/* Info Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
           <a 
-            href={`https://instagram.com/${INSTAGRAM_HANDLE}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="glass-card rounded-2xl p-4 flex items-center gap-3 hover:bg-white transition-colors"
-          >
-            <div className="w-10 h-10 bg-gradient-to-tr from-yellow-400 to-purple-600 rounded-xl flex items-center justify-center text-white shrink-0">
-              <Instagram size={20} />
-            </div>
-            <div>
-              <p className="text-[10px] uppercase tracking-wider text-caramel font-bold">Instagram</p>
-              <p className="text-sm font-semibold truncate">@{INSTAGRAM_HANDLE}</p>
-            </div>
-          </a>
-          
-          <a 
-            href={`https://wa.me/${WHATSAPP_NUMBER}`}
+            href={WHATSAPP_URL}
             target="_blank"
             rel="noopener noreferrer"
             className="glass-card rounded-2xl p-4 flex items-center gap-3 hover:bg-white transition-colors"
@@ -240,12 +204,12 @@ export default function App() {
           <div 
             className="glass-card rounded-2xl p-4 flex items-center gap-3 hover:bg-white transition-colors text-left"
           >
-            <div className="w-10 h-10 bg-coffee-dark rounded-xl flex items-center justify-center text-white shrink-0">
+            <div className="w-10 h-10 bg-caramel rounded-xl flex items-center justify-center text-white shrink-0">
               <MapPin size={20} />
             </div>
             <div>
               <p className="text-[10px] uppercase tracking-wider text-caramel font-bold">Localização</p>
-              <p className="text-sm font-semibold">Itaberá, SP</p>
+              <p className="text-sm font-semibold truncate">Santa Catarina, BR</p>
             </div>
           </div>
         </div>

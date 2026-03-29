@@ -85,5 +85,5 @@ export const PRODUCTS: Product[] = [
   },
 ];
 
-export const WHATSAPP_NUMBER = '5548999999999'; // Exemplo de número
+export const WHATSAPP_URL = 'https://w.app/coffeecake_pedidos';
 export const INSTAGRAM_HANDLE = '_coffeecakesc';
