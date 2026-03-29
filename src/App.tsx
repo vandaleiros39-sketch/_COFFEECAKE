@@ -206,25 +206,41 @@ export default function App() {
 
       <main className="max-w-xl mx-auto px-4 -mt-8 relative z-20">
         {/* Info Cards */}
-        <div className="grid grid-cols-2 gap-3 mb-8">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-8">
           <a 
             href={`https://instagram.com/${INSTAGRAM_HANDLE}`}
             target="_blank"
             rel="noopener noreferrer"
             className="glass-card rounded-2xl p-4 flex items-center gap-3 hover:bg-white transition-colors"
           >
-            <div className="w-10 h-10 bg-gradient-to-tr from-yellow-400 to-purple-600 rounded-xl flex items-center justify-center text-white">
+            <div className="w-10 h-10 bg-gradient-to-tr from-yellow-400 to-purple-600 rounded-xl flex items-center justify-center text-white shrink-0">
               <Instagram size={20} />
             </div>
             <div>
               <p className="text-[10px] uppercase tracking-wider text-caramel font-bold">Instagram</p>
-              <p className="text-sm font-semibold">@{INSTAGRAM_HANDLE}</p>
+              <p className="text-sm font-semibold truncate">@{INSTAGRAM_HANDLE}</p>
             </div>
           </a>
+          
+          <a 
+            href={`https://wa.me/${WHATSAPP_NUMBER}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="glass-card rounded-2xl p-4 flex items-center gap-3 hover:bg-white transition-colors"
+          >
+            <div className="w-10 h-10 bg-green-500 rounded-xl flex items-center justify-center text-white shrink-0">
+              <MessageCircle size={20} />
+            </div>
+            <div>
+              <p className="text-[10px] uppercase tracking-wider text-caramel font-bold">WhatsApp</p>
+              <p className="text-sm font-semibold">PEDIR NO WHATSAPP</p>
+            </div>
+          </a>
+
           <div 
             className="glass-card rounded-2xl p-4 flex items-center gap-3 hover:bg-white transition-colors text-left"
           >
-            <div className="w-10 h-10 bg-green-500 rounded-xl flex items-center justify-center text-white">
+            <div className="w-10 h-10 bg-coffee-dark rounded-xl flex items-center justify-center text-white shrink-0">
               <MapPin size={20} />
             </div>
             <div>
@@ -420,12 +436,12 @@ export default function App() {
             <div className="absolute inset-0 bg-white/10 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-500"></div>
             <div className="flex items-center gap-3">
               <div className="relative">
-                <ShoppingBag size={24} />
+                <MessageCircle size={24} />
                 <span className="absolute -top-2 -right-2 bg-accent text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center border-2 border-coffee-dark">
                   {cart.reduce((acc, item) => acc + item.quantity, 0)}
                 </span>
               </div>
-              <span className="font-bold">Ver sacola</span>
+              <span className="font-bold uppercase tracking-wider">Pedir no WhatsApp</span>
             </div>
             <span className="text-lg font-bold">{formatCurrency(cartTotal)}</span>
           </button>
@@ -512,8 +528,8 @@ export default function App() {
                   disabled={cart.length === 0}
                   className="w-full btn-primary flex items-center justify-center gap-2"
                 >
-                  Finalizar Pedido
-                  <ChevronRight size={20} />
+                  <MessageCircle size={20} />
+                  PEDIR NO WHATSAPP
                 </button>
               </div>
             </motion.div>
@@ -610,7 +626,7 @@ export default function App() {
                   className="w-full bg-green-600 text-white p-4 rounded-2xl font-bold flex items-center justify-center gap-3 hover:bg-green-700 transition-colors shadow-lg"
                 >
                   <MessageCircle size={24} />
-                  Enviar para o WhatsApp
+                  PEDIR NO WHATSAPP
                 </button>
                 <p className="text-[10px] text-center text-caramel mt-4 uppercase tracking-widest font-bold">
                   Você será redirecionado para o WhatsApp
